@@ -2,6 +2,8 @@
 
 Load with `SKILL.md`. Covers landing pages, product marketing, ads, headlines, CTAs, value propositions, pricing, FAQ, and About pages.
 
+**Provenance: convention, not corpus.** These rules come from conversion and editorial copy practice. The vocabulary rules this file cites are inherited from the corpus-grounded universal layer in `SKILL.md`; the register-specific pattern lists below are not, so treat their shapes as real and their frequencies as unmeasured. The same applies to every file in `references/` and `layers/`. No corpus study of machine-written marketing copy stands behind them.
+
 Marketing is the register where fabrication is most tempting and most damaging, because vague copy and invented copy look identical at a glance. The Hard rules do most of the work here.
 
 ## Reading the examples
@@ -109,6 +111,36 @@ An FAQ is answers to questions people actually asked. Anything else is filler th
 - "Absolutely!" and "Of course!" as answer openers are CW-57 and add nothing.
 - If you do not know what people ask, the section does not exist yet.
 
+## Press releases
+
+A release has conventions worth keeping: the news in the first sentence, the detail in descending order, the boilerplate at the end. What AI adds is ceremony where the news should be.
+
+- **The news goes first.** Not the company description, not the market context. "Acme raised $4M" is the lede. "Acme, a leading provider of workflow solutions, today announced" buries it behind a claim nobody asked for.
+- **"Leading", "innovative", and "award-winning" are CW-02** unless the award and the ranking are named with a source.
+- **Executive quotes are the highest fabrication risk in this register.** A quote is written by, or approved by, the person named. Never draft one and present it as said (CW-04, CW-07). An unapproved quote is marked `[QUOTE PENDING APPROVAL]`.
+- **Every number is sourced**: funding amounts, customer counts, growth rates, headcount.
+- **Boilerplate stays identical** across releases (CW-25 inverted). It is a reference block, not fresh copy.
+
+Before:
+
+> Acme, a leading innovator in the workflow automation space, is thrilled to announce the launch of its groundbreaking new platform, revolutionizing how teams collaborate.
+
+Rules hit: CW-02 (leading, innovator), CW-10 (groundbreaking, revolutionizing), CW-11, CW-57 in prose form.
+
+After:
+
+> Acme released a shared editor today. [State what it does and who can use it. The source names no capability.]
+
+## Product and catalog copy
+
+Listings, catalog entries, marketplace descriptions, and spec blocks. The reader is comparing, not being persuaded, and they are looking for one fact that rules the item in or out.
+
+- **Specifications are facts, not copy.** Dimensions, materials, compatibility, and contents are never estimated to fill a field. An invented measurement is CW-01 and it becomes a return.
+- **The first line names what the thing is**, in the words a buyer would search for. A poetic opener costs the sale of every buyer who could not tell what the item was.
+- **Adjective stacks replace nothing.** "Premium, durable, versatile" is CW-20 plus CW-10 and describes no object. State the material and the load rating.
+- **Templated variants still need real differences.** Twenty listings differing only in a colour word are a catalog with one entry.
+- **Do not answer a question the product does not answer.** Where compatibility is unknown, say it is unlisted rather than guessing (CW-05).
+
 ## Format defaults for this register
 
 Marketing prose is read fast and skimmed first, which makes formatting tells louder here than anywhere else.
@@ -131,4 +163,6 @@ Run after the universal gate in `SKILL.md`.
 - [ ] No pivot sentence, no temporal opener (CW-28, CW-29)
 - [ ] Pricing describes real tiers, or labeled placeholders
 - [ ] Every FAQ question is one a real user asked
+- [ ] In a release: the news is in the first sentence, and every quote is approved by the person named (CW-04, CW-07)
+- [ ] In a listing: every specification is a real measured fact, and the first line names the object
 - [ ] The page would still make sense to a reader who skipped every adjective

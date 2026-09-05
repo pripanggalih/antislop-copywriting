@@ -18,16 +18,31 @@ Manual install: copy `skills/antislop-copywriting/` into your agent's skills dir
 
 ## What it covers
 
-Four registers, because prose rules are not universal. Documentation needs the bolded term lists that marketing must avoid, and a UI error message needs the sentence fragments that would be a defect in an essay.
+Eleven registers, because prose rules are not universal. Documentation needs the bolded term lists that marketing must avoid, a UI error message needs the sentence fragments that would be a defect in an essay, and a methods section is uniform because the method was.
 
 | Register | Covers |
 |---|---|
-| Marketing | Landing pages, headlines, CTAs, value propositions, pricing, FAQ |
+| Marketing | Landing pages, headlines, CTAs, pricing, FAQ, press releases, product listings |
 | Product UI | Buttons, labels, errors, empty states, tooltips, notifications |
 | Documentation | README, API reference, guides, changelogs, code comments |
 | Editorial | Blog posts, articles, essays, newsletters |
+| Academic | Journal articles, theses, abstracts, literature reviews, peer review |
+| Correspondence | Email, cold outreach, memos, status updates, chat, support replies |
+| Social | Posts and threads, captions, video titles, community replies |
+| Spoken | Video scripts, podcasts, voiceover, talks, demo narration |
+| Proposal | Proposals, RFP responses, pitch decks, business cases, investor updates |
+| Instructional | Course modules, training material, exercises, quizzes |
+| Personal | Cover letters, resumes, bios, personal statements |
 
-Plus a language layer for Indonesian copy, which sits in its own file and is [labeled honestly](#the-indonesian-layer-is-not-validated).
+On top of a register sit constraint layers. A layer never replaces a register, it adds requirements to it.
+
+| Layer | Applies when |
+|---|---|
+| Bahasa Indonesia | The copy is in Indonesian. [Labeled honestly](#what-is-validated-and-what-is-not) |
+| SEO | The text is written to be found by search |
+| Plain language | The reader has no choice about reading: notices, forms, health, safety, consent |
+
+Registers that touch have a stated boundary in `SKILL.md`, so the choice is not left to taste. Documentation is a reference someone returns to; instructional is a path someone walks once. Marketing is read by many browsers; a proposal is read by one person holding a rubric.
 
 ## How it decides
 
@@ -59,25 +74,41 @@ Writing or editing: the rules apply as the text is produced, and it finishes wit
 
 Auditing: ask whether something reads as AI, or ask for a review. You get a numbered findings list with rule IDs, quoted text, and one-line fixes. Nothing is changed until you pick numbers. Findings are reported inline; a file is written only if you ask for one.
 
-## The Indonesian layer is not validated
+## What is validated and what is not
 
-The English material is grounded in published work: corpus studies of excess vocabulary in 2024 publications, editorial guidance, and detection research. No equivalent corpus exists for Indonesian.
+The two tiers are held to different standards of evidence, and so are the files.
 
-The Indonesian patterns were derived inductively from 18 synthetic samples across the four registers. That finds real patterns but can only find the ones present in the generator's own habits, and it measures nothing about how often they occur in real text. The layer is kept in its own file so it can be corrected or replaced without touching validated material.
+**The universal layer** in `SKILL.md` is the grounded part. Its vocabulary and pattern rules come from published work on machine-written text: corpus studies of excess vocabulary in 2024 publications, editorial guidance, and detection research.
 
-If you have real Indonesian AI-written copy, open an issue. Patterns that appear in real text but not in that synthetic set are the most useful contribution this project can receive.
+**Every register and layer file rests on field convention**, not on a corpus study of AI-written text in that register. A proposal file describes how bids are scored; an academic file describes how papers are read; a marketing file describes conversion practice. Those conventions are real and checkable, but nobody has measured how often a model breaks each one. Every file in `references/` and `layers/` carries a provenance line under its title saying so, including the four registers this skill shipped with. The Indonesian layer carries a fuller status section instead, because it is weaker still. Read their shapes as real and their frequencies as unmeasured.
+
+**The Indonesian layer is the least validated file here**, and it is labeled hardest. No corpus of Indonesian AI-written text exists. Its patterns were derived inductively from 18 synthetic samples across the four registers that existed when it was written. That finds real patterns but only the ones present in the generator's own habits, and it measures nothing about how often they occur in real text. The seven registers added since have not been sampled in Indonesian at all.
+
+None of this touches the Hard tier. Whether a citation exists is not a matter of corpus frequency.
+
+If you have real AI-written copy in any of these registers, and especially in Indonesian, open an issue. Patterns that appear in real text but not in these files are the most useful contribution this project can receive.
 
 ## Layout
 
 ```
 skills/antislop-copywriting/
-├── SKILL.md                        universal rules, thresholds, delivery gate
-└── references/
-    ├── marketing.md
-    ├── product-ui.md
-    ├── documentation.md
-    ├── editorial.md
-    └── bahasa-indonesia.md
+├── SKILL.md                        universal rules, thresholds, register router, delivery gate
+├── references/                     one register per file, load exactly one
+│   ├── marketing.md
+│   ├── product-ui.md
+│   ├── documentation.md
+│   ├── editorial.md
+│   ├── academic.md
+│   ├── correspondence.md
+│   ├── social.md
+│   ├── spoken.md
+│   ├── proposal.md
+│   ├── instructional.md
+│   └── personal.md
+└── layers/                         stack on top of a register, load only when they apply
+    ├── bahasa-indonesia.md
+    ├── seo.md
+    └── plain-language.md
 ```
 
 `SKILL.md` is read every time. One reference file is read per task, chosen by register. Loading all of them at once is the thing this layout exists to avoid.

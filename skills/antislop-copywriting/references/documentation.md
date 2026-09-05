@@ -2,6 +2,8 @@
 
 Load with `SKILL.md`. Covers README files, API reference, guides and tutorials, changelogs, migration notes, architecture documents, and prose inside code comments.
 
+**Provenance: convention, not corpus.** These rules come from technical writing practice. The vocabulary rules this file cites are inherited from the corpus-grounded universal layer in `SKILL.md`; the register-specific pattern lists below are not, so treat their shapes as real and their frequencies as unmeasured. The same applies to every file in `references/` and `layers/`. No corpus study of machine-written documentation stands behind them.
+
 Documentation is written to be searched, scanned, and abandoned the moment the reader has what they came for. Nobody reads it for pleasure and nobody reads it in order. That changes which universal rules apply.
 
 ## Rules this register overrides

@@ -4,9 +4,9 @@ Load with `SKILL.md` **and** the matching register file, when the copy is in Ind
 
 ## Status of this file: not yet validated
 
-Every other file in this skill is grounded in published work on machine-written text: corpus studies of excess vocabulary in 2024 publications, editorial guidance, and detection research. That work is almost entirely about English.
+The universal layer in `SKILL.md` is grounded in published work on machine-written text: corpus studies of excess vocabulary in 2024 publications, editorial guidance, and detection research. That work is almost entirely about English. Most register and layer files carry a provenance line of their own, and several state that they rest on field convention rather than on a corpus.
 
-No equivalent corpus exists for Indonesian. The patterns below were derived inductively from a set of 18 synthetic Indonesian samples generated across the four registers, then grouped by shape. That method finds real patterns, but it can only find the ones present in the generator's own habits, and it cannot measure how often any of them occur in the wild.
+No equivalent corpus exists for Indonesian. The patterns below were derived inductively from a set of 18 synthetic Indonesian samples generated across the four registers that existed when this file was written (marketing, product UI, documentation, editorial), then grouped by shape. The seven registers added since have not been sampled in Indonesian at all. That method finds real patterns, but it can only find the ones present in the generator's own habits, and it cannot measure how often any of them occur in the wild.
 
 Treat this file as a working hypothesis. It is separated from the register files precisely so it can be corrected or replaced wholesale without touching validated material. Patterns confirmed against real samples should be marked as such; patterns that never appear in real text should be deleted rather than left in.
 

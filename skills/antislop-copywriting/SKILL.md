@@ -1,6 +1,6 @@
 ---
 name: antislop-copywriting
-description: "Filter for prose that reads as machine-written. Use when writing, editing, rewriting, reviewing, or auditing any text a person will read: landing page and marketing copy, headlines, CTAs, value propositions, pricing and FAQ text, product UI microcopy (buttons, errors, empty states, tooltips, form labels), technical documentation (README, API reference, guides, changelogs), and long-form editorial (blog posts, articles, newsletters). Also use when someone says text sounds AI-generated, reads like ChatGPT, feels generic, or asks to make writing sound human."
+description: "Filter for prose that reads as machine-written. Use when writing, editing, rewriting, reviewing, or auditing any text a person will read: marketing and landing copy (headlines, CTAs, pricing, FAQ, press releases, listings), product UI microcopy (buttons, errors, empty states, tooltips), technical documentation (README, API reference, guides, changelogs), long-form editorial (blog posts, articles, newsletters), academic and research writing (papers, theses, abstracts), correspondence (email, outreach, memos, status updates, chat), social posts and threads, spoken scripts (video, podcast, talks, voiceover), proposals and pitch decks, course and training material, and personal writing (bios, cover letters, resumes). Also use when someone says text sounds AI-generated, reads like ChatGPT, feels generic, or asks to make writing sound human."
 allowed-tools: Read Write Edit Glob Grep
 ---
 
@@ -13,15 +13,38 @@ Two failures, not one. Copy stuffed with AI tells is the obvious failure. Copy w
 ## How this skill is organised
 
 - **This file** holds the universal layer: rules that apply to every kind of prose, the numeric thresholds that decide when a pattern becomes a defect, and the delivery gate.
-- **`references/`** holds the register layers. Load the one that matches the task, and only that one:
-  - `references/marketing.md` for landing pages, ads, product marketing, pricing, FAQ
+- **`references/`** holds the registers. Load the one that matches the task, and only that one:
+  - `references/marketing.md` for landing pages, ads, product marketing, pricing, FAQ, press releases, product listings
   - `references/product-ui.md` for buttons, labels, errors, empty states, tooltips, notifications
   - `references/documentation.md` for README, API reference, guides, changelogs, comments
   - `references/editorial.md` for blog posts, articles, essays, newsletters
-  - `references/bahasa-indonesia.md` when the copy is in Indonesian, in addition to the register file
-- Register layers override this file where they disagree. Documentation genuinely needs inline-header lists and bold terms that marketing must not use. That is not an exception to the rule, it is the rule being register-aware.
+  - `references/academic.md` for journal articles, theses, abstracts, literature reviews, peer review reports
+  - `references/correspondence.md` for email, cold outreach, memos, status updates, chat messages, support replies
+  - `references/social.md` for posts and threads on social platforms, captions, community replies
+  - `references/spoken.md` for video scripts, podcasts, voiceover, talks, demo narration
+  - `references/proposal.md` for proposals, RFP responses, pitch decks, business cases, investor updates
+  - `references/instructional.md` for course modules, training material, exercises, quizzes
+  - `references/personal.md` for cover letters, resumes, bios, personal statements
+- **`layers/`** holds constraint layers. A layer stacks on top of a register and never replaces one. Load one only where it applies:
+  - `layers/bahasa-indonesia.md` when the copy is in Indonesian
+  - `layers/seo.md` when the text is written to be found by search
+  - `layers/plain-language.md` when the reader has no choice about reading: notices, forms, health, safety, consent, benefits
+- Precedence runs universal, then register, then layer. A register file overrides this one where they disagree: documentation genuinely needs the inline-header lists and bold terms that marketing must not use, which is not an exception to the rule but the rule being register-aware. A layer file overrides both, and every rule a layer changes is named in that file.
 
-Read the universal layer, then the one register file. Do not load all four.
+Read the universal layer, then one register file, then any layer that applies. Do not load the rest.
+
+Where two registers touch, this is the line:
+
+- **documentation and instructional.** A reference someone returns to, against a path someone walks once.
+- **marketing and proposal.** Many browsers, against one reader scoring you against a rubric.
+- **marketing and correspondence.** A broadcast, against a message with a named recipient who can reply.
+- **editorial and academic.** An argument for a general reader, against one for a reader who will check the citations.
+- **editorial and social.** Read on its own page, against read in a feed next to forty other posts.
+- **product-ui and correspondence.** A string shipped inside the product, against a message a person sends.
+- **marketing and personal.** The subject is a real person who will be asked about every sentence in an interview.
+- **editorial and spoken.** The reader can go back a paragraph. The listener cannot.
+
+When two still fit, pick the one whose reader is closer to the text, and say which you picked.
 
 ## Rule tiers
 
@@ -112,11 +135,13 @@ A threshold rule is a defect when it crosses a line. These are the lines.
 | Any single threshold rule appears 3 or more times per 500 words | FAIL |
 | 5 or more consecutive paragraphs within 15% of the same word count (CW-26) | FAIL |
 | 2 or more triads within 150 words (CW-20) | FAIL |
-| More than 2 bold spans per 100 words, outside documentation (CW-51) | FAIL |
-| More than 1 exclamation mark per 150 words, outside product UI (CW-57) | FAIL |
+| More than 2 bold spans per 100 words, outside documentation, instructional, and plain-language work (CW-51) | FAIL |
+| More than 1 exclamation mark per 150 words, outside product UI and social (CW-57) | FAIL |
 | Any Hard rule, one instance | FAIL |
 
 Count instances, do not estimate. If a passage is under 200 words, scale the first line proportionally and say so.
+
+A register or layer file may suspend or relax a threshold. Where one does, it names the rule and the sections it covers, and the suspension reaches no further than that. A threshold no file has suspended is in force.
 
 ## What not to flag
 
@@ -181,7 +206,7 @@ Every line must be true before delivering.
 - [ ] Every threshold in the table above measured and under the line
 - [ ] Paragraph lengths vary; no uniform cadence (CW-26)
 - [ ] Every sentence names its actor where one was available (CW-30, CW-31)
-- [ ] The correct register file was read and applied (CW-61)
+- [ ] The correct register file was read and applied, plus any layer that applies (CW-61)
 - [ ] The copy has a voice: the user's sample, or a register chosen on purpose (CW-60)
 - [ ] Read aloud once. It sounds like a person, not like a model filling space.
 

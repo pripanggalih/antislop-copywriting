@@ -2,6 +2,8 @@
 
 Load with `SKILL.md`. Covers blog posts, articles, essays, newsletters, opinion pieces, and case studies.
 
+**Provenance: convention, not corpus.** These rules come from editorial practice. The vocabulary rules this file cites are inherited from the corpus-grounded universal layer in `SKILL.md`; the register-specific pattern lists below are not, so treat their shapes as real and their frequencies as unmeasured. The same applies to every file in `references/` and `layers/`. No corpus study of machine-written long-form articles stands behind them.
+
 Length is what makes this register different. A landing page has too few words to establish a rhythm. Three thousand words establish one whether the writer intended it or not, and machine rhythm is the most reliable tell there is. In long text, structure gives you away before vocabulary does.
 
 ## The structural tells

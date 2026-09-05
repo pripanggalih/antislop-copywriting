@@ -2,6 +2,8 @@
 
 Load with `SKILL.md`. Covers button labels, form labels and helper text, error messages, empty states, loading states, confirmations, tooltips, toasts, notifications, onboarding, and permission prompts.
 
+**Provenance: convention, not corpus.** These rules come from content design practice. The vocabulary rules this file cites are inherited from the corpus-grounded universal layer in `SKILL.md`; the register-specific pattern lists below are not, so treat their shapes as real and their frequencies as unmeasured. The same applies to every file in `references/` and `layers/`. No corpus study of machine-written microcopy stands behind them.
+
 Microcopy is read by someone in the middle of doing something, often something that has just gone wrong. Every word costs the reader attention they were spending elsewhere. This register is where the universal rules bend the most, because brevity outranks nearly everything.
 
 ## What changes in this register
